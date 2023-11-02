@@ -13,14 +13,14 @@ myAttribute = (MyAttribute?)Attribute.GetCustomAttribute(myClass.GetType(), type
 Console.WriteLine($"FriendlyName 2 = {myAttribute?.FriendlyName}");
 Console.WriteLine($"Abbreviation 2 = {myAttribute?.Abbreviation}");
 
-// 2. Get MyAttribute attribute for property "Value"
+// 3. Get MyAttribute attribute for property "Value"
 myAttribute = typeof(MyClass).GetProperty(nameof(MyClass.Value))
                             ?.GetCustomAttribute<MyAttribute>();
 Console.WriteLine($"FriendlyName 3 = {myAttribute?.FriendlyName}");
 Console.WriteLine($"Abbreviation 3 = {myAttribute?.Abbreviation}");
 
 
-// 3. List attributes.
+// 4. List attributes.
 var attributes = GetPropertyAttributes<MyClass, MyAttribute>(x => x.Value)?.ToList();
 Console.WriteLine($"\n\nAttributes listing, count={attributes?.Count}");
 foreach (var item in attributes ?? new())
